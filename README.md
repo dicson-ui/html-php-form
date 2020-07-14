@@ -1,2 +1,2 @@
-# html-php-form
-Simple HTML Form Using PHP and Ajax Call
+# HTML Form Using PHP
+Simple HTML Form Using PHP, Ajax Call and parsley.js
