@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Simple HTML Form Using PHP, Ajax Call and parsley.js</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="theme-color" content="#073a68">
+    <link rel="icon" type="image/png" href="./img/favicon.png" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no, viewport-fit=cover"
+    />
+    <!-- <script type="text/javascript" src="./js/jquery-3.5.1.min.js"></script> -->
+    <!-- <link rel="stylesheet" type="text/css" href="./style/main.css?v=4"> -->
+    <script type="text/javascript" src="./js/bouncer.polyfills.min.js"></script>
+  </head>
+
+  <body>
+    <h2 class="title">Simple HTML Form Using PHP</h2>
+    <form id="customFrom" class="customFrom">
+      <div class="flex">
+        <div class="row customSelect">
+          <select name="salutation" class="inputField" id="salutation" required>
+            <option value="">Salutation*</option>
+            <option value="Mr">Mr</option>
+            <option value="Mrs .Ms">Mrs .Ms</option>
+            <option value="Dr">Dr</option>
+            <option value="Prof">Prof</option>
+          </select>
+        </div>
+        <div class="row">
+          <input class="inputField" type="text" id="firstname" name="firstname" placeholder="First Name*" data-parsley-pattern="^[a-zA-Z]+$" minlength="3" required>
+        </div>
+        <div class="row">
+          <input class="inputField" type="text" id="lastname" name="lastname" placeholder="Last Name*" data-parsley-pattern="^[a-zA-Z]+$" required>
+        </div>
+        <div class="row">
+          <input class="inputField" type="text" id="email" name="email" placeholder="Email*" data-parsley-type="email" required>
+        </div>
+        <div class="row">
+          <input class="inputField" type="text" minlength="6" id="phone" name="phone"  placeholder="Phone no (091 00000 00000)*" data-parsley-pattern="^[0-9]+$" required>
+        </div>
+        <div class="row customSelect">
+          <select class="inputField" name="course" id="course" required>
+            <option value="">Course*</option>
+            <option value="1">1</option>
+          </select>
+        </div>
+        <div class="row">
+          <input class="inputField" type="text" id="industry" name="industry" placeholder="Industry*" required>
+        </div>
+      </div>
+      <div class="row">
+        <textarea class="inputField" type="text" id="message" name="message" placeholder="Message*" required></textarea>
+      </div>
+      <div class="row checkboxs">
+        <p>Area of Interest <span>Tick mark in a Box*</span></p>
+        <label for="online" class="customCheckbox"><input data-parsley-error-message="Select the area of interest" data-parsley-errors-container=".areaofinterest" id="online" type="radio" name="areaofinterest" value="Online Training" required/><i></i>Online Training</label>
+        <label for="company" class="customCheckbox"><input data-parsley-errors-container=".areaofinterest" id="company" type="radio" name="areaofinterest" value="In company Training" required/><i></i>In company Training</label>
+        <label for="certification" class="customCheckbox"><input data-parsley-errors-container=".areaofinterest" id="certification" type="radio" name="areaofinterest" value="Certification" required/><i></i>Certification</label>
+        <label for="college" class="customCheckbox"><input data-parsley-errors-container=".areaofinterest" id="college" type="radio" name="areaofinterest" value="Overseas College  Admission" required/><i></i>Overseas College Admission</label>
+        <div class="areaofinterest"></div>  
+      </div>
+      <div class="hide">
+        <input type="hidden" id="setcaptcha"/>
+      </div>
+      <div class="rowcaptcha">
+        <div class="row">
+          <input class="inputField captchainput" type="text" placeholder="Enter Captcha*" data-bouncer-match="#setcaptcha" data-bouncer-mismatch-message="Captcha do not match." id="captcha" name="captcha" required>
+          <div class="captchaValue"><canvas id="captchaValue" width="80" height="30"></canvas></div>
+        </div>
+        <div class="refreshCaptcha icon-refresh">X</div>
+      </div>
+      <div id="action" class="action">
+        <button class="btn" id="submit" >Send</button> <div class="loader"><i></i></div>
+      </div>
+    </form>
+    <p id="success" class="message hide">Application form has been sent.</p>
+      <p id="errorMsg" class="message error hide">Something went wrong!...</p>
+    <script type="text/javascript" src="./js/index.js?v=2"></script>
+  </body>
+</html>
